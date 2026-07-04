@@ -13,7 +13,6 @@ import { Layout } from '@/components/layout/Layout'
 import { ChatBubble } from '@/components/chat/ChatBubble'
 import { MessageInput } from '@/components/chat/MessageInput'
 import { SuggestionCard } from '@/components/chat/SuggestionCard'
-import { LoadingSkeleton } from '@/components/common/LoadingSkeleton'
 import { Card } from '@/components/common/Card'
 import { Button } from '@/components/common/Button'
 
@@ -71,7 +70,7 @@ export default function AiDoubtAssistantPage() {
     },
   ])
   const [isLoading, setIsLoading] = useState(false)
-  const [showRightPanel, setShowRightPanel] = useState(true)
+  const [showRightPanel] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   // Auto-scroll to bottom
