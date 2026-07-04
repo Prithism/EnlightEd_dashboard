@@ -70,7 +70,7 @@ export default function AiDoubtAssistantPage() {
     },
   ])
   const [isLoading, setIsLoading] = useState(false)
-  const [showRightPanel] = useState(true)
+  const showRightPanel = true
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   // Auto-scroll to bottom
