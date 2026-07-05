@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Clock, MapPin, Video } from 'lucide-react'
+import { Clock, MapPin } from 'lucide-react'
 import { Card } from '@/components/common/Card'
 
 interface TimelineItem {
@@ -18,12 +18,6 @@ interface TimelineItem {
 interface TimelineCardProps {
   title: string
   items: TimelineItem[]
-}
-
-const typeIcons = {
-  class: <Video size={16} className="text-secondary" />,
-  assignment: <Clock size={16} className="text-gold" />,
-  exam: <Clock size={16} className="text-primary" />,
 }
 
 const typeColors = {

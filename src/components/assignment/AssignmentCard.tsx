@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Clock, BookOpen, CheckCircle, Play, Eye } from 'lucide-react'
+import { Clock, Play, Eye } from 'lucide-react'
 import { Card } from '@/components/common/Card'
 import { Button } from '@/components/common/Button'
 import { ANIMATION } from '@/utils/designTokens'
@@ -62,7 +62,6 @@ export const AssignmentCard: React.FC<AssignmentCardProps> = ({
   status,
   progress = 0,
   score,
-  subjectColor,
   icon,
   onAction,
 }) => {
@@ -79,10 +78,6 @@ export const AssignmentCard: React.FC<AssignmentCardProps> = ({
         ease: ANIMATION.EASING_SPRING,
       },
     },
-  }
-
-  const hoverVariants = {
-    hover: { scale: 1.02, y: -4 },
   }
 
   return (

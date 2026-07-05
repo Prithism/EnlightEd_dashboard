@@ -2,9 +2,8 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Clock, MapPin, User, Bell } from 'lucide-react'
+import { Clock, MapPin, User } from 'lucide-react'
 import { Card } from '@/components/common/Card'
-import { Badge } from '@/components/common/Badge'
 import { ANIMATION } from '@/utils/designTokens'
 
 interface EventCardProps {
@@ -34,26 +33,14 @@ const getCategoryColor = (category: string) => {
   return colors[category] || colors.personal
 }
 
-const getPriorityColor = (priority: string) => {
-  const colors: Record<string, string> = {
-    high: '#C9972A',   // gold
-    medium: '#35A8C8', // teal
-    low: '#90C2E7',    // secondary
-  }
-  return colors[priority] || colors.low
-}
-
 export const EventCard: React.FC<EventCardProps> = ({
-  id,
   title,
   time,
-  date,
   category,
   duration,
   location,
   instructor,
   description,
-  priority = 'medium',
   hasJoinButton = false,
   onJoin,
   isLive = false,

@@ -81,7 +81,7 @@ export const TodaySchedule: React.FC<TodayScheduleProps> = ({ events, onJoinClas
       variants={containerVariants}
       className="space-y-4"
     >
-      <h3 className="font-body font-semibold text-ink text-lg mb-4">Today's Schedule</h3>
+      <h3 className="font-body font-semibold text-ink text-lg mb-4">Today&apos;s Schedule</h3>
 
       <div className="space-y-3 max-h-[600px] overflow-y-auto">
         {events.length > 0 ? (

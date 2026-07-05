@@ -1,11 +1,16 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import React from 'react'
 import '@/styles/globals.css'
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
 
 export const metadata: Metadata = {
   title: 'EnlightEd Dashboard',
   description: 'Premium SaaS analytics dashboard built with React, Next.js, and Tailwind CSS',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
   robots: 'index, follow',
   openGraph: {
     title: 'EnlightEd Dashboard',

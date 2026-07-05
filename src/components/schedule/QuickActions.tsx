@@ -3,13 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/common/Button'
-import {
-  Play,
-  Plus,
-  BookOpen,
-  FileText,
-  ClipboardList,
-} from 'lucide-react'
+
 import { ANIMATION } from '@/utils/designTokens'
 
 interface QuickAction {

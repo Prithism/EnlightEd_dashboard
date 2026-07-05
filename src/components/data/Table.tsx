@@ -11,12 +11,12 @@ export interface TableColumn {
   label: string
   width?: string
   sortable?: boolean
-  render?: (value: any, row: any) => React.ReactNode
+  render?: (value: unknown, row: TableRow) => React.ReactNode
 }
 
 export interface TableRow {
   id: string | number
-  [key: string]: any
+  [key: string]: unknown
 }
 
 interface TableProps {
@@ -139,7 +139,7 @@ export const Table: React.FC<TableProps> = ({
                         className="px-4 py-3 text-sm text-ink font-body flex md:table-cell items-center before:content-[attr(data-label)] before:font-semibold before:mr-2 before:text-primary md:before:content-none md:before:mr-0"
                         data-label={column.label}
                       >
-                        {column.render ? column.render(row[column.key], row) : row[column.key]}
+                        {column.render ? column.render(row[column.key], row) : row[column.key] as React.ReactNode}
                       </td>
                     ))}
                   </motion.tr>

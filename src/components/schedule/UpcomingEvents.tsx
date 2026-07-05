@@ -3,7 +3,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '@/components/common/Card'
-import { Badge } from '@/components/common/Badge'
 import { Clock, AlertCircle } from 'lucide-react'
 import { ANIMATION } from '@/utils/designTokens'
 

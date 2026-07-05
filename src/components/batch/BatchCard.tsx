@@ -44,10 +44,6 @@ export const BatchCard: React.FC<BatchCardProps> = ({
     },
   }
 
-  const hoverVariants = {
-    hover: { scale: 1.02 },
-  }
-
   return (
     <motion.div
       key={id}
@@ -61,6 +57,7 @@ export const BatchCard: React.FC<BatchCardProps> = ({
         {/* Thumbnail */}
         {thumbnail ? (
           <div className="w-full h-40 -mx-6 -mt-6 mb-4 rounded-t-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={thumbnail}
               alt={courseName}

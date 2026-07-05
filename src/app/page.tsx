@@ -7,8 +7,6 @@ import {
   BookOpen,
   TrendingUp,
   Award,
-  ArrowUpRight,
-  ArrowDownLeft,
 } from 'lucide-react'
 import { Layout } from '@/components/layout/Layout'
 import { MetricCard } from '@/components/metrics/MetricCard'
@@ -49,12 +47,12 @@ const metricsData = [
 ]
 
 const chartData = [
-  { month: 'Jan', students: 400, revenue: 2400, completions: 240 },
-  { month: 'Feb', students: 520, revenue: 2210, completions: 221 },
-  { month: 'Mar', students: 680, revenue: 2290, completions: 229 },
-  { month: 'Apr', students: 890, revenue: 2000, completions: 200 },
-  { month: 'May', students: 1050, revenue: 2181, completions: 218 },
-  { month: 'Jun', students: 1250, revenue: 2500, completions: 250 },
+  { name: 'Jan', students: 400, revenue: 2400, completions: 240 },
+  { name: 'Feb', students: 520, revenue: 2210, completions: 221 },
+  { name: 'Mar', students: 680, revenue: 2290, completions: 229 },
+  { name: 'Apr', students: 890, revenue: 2000, completions: 200 },
+  { name: 'May', students: 1050, revenue: 2181, completions: 218 },
+  { name: 'Jun', students: 1250, revenue: 2500, completions: 250 },
 ]
 
 const studentsTableColumns: TableColumn[] = [
@@ -74,7 +72,7 @@ const studentsTableColumns: TableColumn[] = [
       }
       return (
         <span className={`px-3 py-1 rounded-lg text-xs font-semibold ${statusClasses[value as keyof typeof statusClasses] || statusClasses.inactive}`}>
-          {value}
+          {value as string}
         </span>
       )
     },
@@ -210,7 +208,7 @@ export default function DashboardPage() {
                 Dashboard
               </h1>
               <p className="text-muted font-body">
-                Welcome back! Here's your academy overview for this month.
+                Welcome back! Here&apos;s your academy overview for this month.
               </p>
             </div>
             <Button variant="primary" size="lg">

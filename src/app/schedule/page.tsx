@@ -9,7 +9,6 @@ import { TodaySchedule } from '@/components/schedule/TodaySchedule'
 import { UpcomingEvents } from '@/components/schedule/UpcomingEvents'
 import { QuickActions } from '@/components/schedule/QuickActions'
 import { ScheduleStatistics } from '@/components/schedule/ScheduleStatistics'
-import { Card } from '@/components/common/Card'
 import { ANIMATION } from '@/utils/designTokens'
 import {
   Play,
@@ -18,7 +17,6 @@ import {
   FileText,
   ClipboardList,
   Clock,
-  AlertCircle,
   Users,
 } from 'lucide-react'
 

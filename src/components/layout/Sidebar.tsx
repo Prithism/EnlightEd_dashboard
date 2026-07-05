@@ -60,7 +60,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/' }) => {
 
   const overlayVariants = {
     open: { opacity: 1 },
-    closed: { opacity: 0, pointerEvents: 'none' },
+    closed: { opacity: 0, pointerEvents: 'none' as const },
   }
 
   const SidebarContent = () => (

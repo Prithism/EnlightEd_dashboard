@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '@/components/common/Card'
-import { ANIMATION, COLORS } from '@/utils/designTokens'
+import { ANIMATION } from '@/utils/designTokens'
 
 interface ScheduleEvent {
   id: string

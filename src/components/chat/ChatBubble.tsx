@@ -46,6 +46,7 @@ export const ChatBubble: React.FC<ChatBubbleProps> = ({
         isUser ? 'bg-primary/20 text-primary' : 'bg-secondary/20 text-secondary'
       }`}>
         {avatar ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
           <img src={avatar} alt="avatar" className="w-full h-full rounded-full" />
         ) : (
           <span className="text-xs font-bold">{isUser ? 'U' : 'AI'}</span>

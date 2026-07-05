@@ -10,7 +10,6 @@ interface SuggestionCardProps {
   title: string
   description?: string
   onClick: () => void
-  variant?: 'default' | 'highlighted'
 }
 
 export const SuggestionCard: React.FC<SuggestionCardProps> = ({
@@ -18,7 +17,6 @@ export const SuggestionCard: React.FC<SuggestionCardProps> = ({
   title,
   description,
   onClick,
-  variant = 'default',
 }) => {
   return (
     <motion.div
