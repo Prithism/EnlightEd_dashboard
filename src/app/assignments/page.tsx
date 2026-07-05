@@ -179,7 +179,7 @@ export default function AssignmentsPage() {
   }
 
   return (
-    <Layout title="Assignments" activeRoute="/assignments">
+    <Layout title="Quiz" activeRoute="/assignments">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -202,7 +202,7 @@ export default function AssignmentsPage() {
         <motion.div variants={itemVariants}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { label: 'Total Assignments', value: stats.total, color: 'text-ink' },
+              { label: 'Total Quizzes', value: stats.total, color: 'text-ink' },
               { label: 'Pending', value: stats.pending, color: 'text-gold' },
               { label: 'In Progress', value: stats.inProgress, color: 'text-primary' },
               { label: 'Graded', value: stats.graded, color: 'text-secondary' },
@@ -257,9 +257,9 @@ export default function AssignmentsPage() {
           ) : (
             <div className="py-16 text-center">
               <BookOpen size={48} className="mx-auto text-muted/40 mb-4" />
-              <h3 className="font-display font-bold text-2xl text-ink mb-2">No Assignments</h3>
+              <h3 className="font-display font-bold text-2xl text-ink mb-2">No Quizzes</h3>
               <p className="text-muted font-body">
-                No assignments match the selected filter. Try a different filter or check back later.
+                No quizzes match the selected filter. Try a different filter or check back later.
               </p>
             </div>
           )}

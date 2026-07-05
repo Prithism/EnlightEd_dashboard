@@ -27,7 +27,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Dashboard', href: '/', icon: <LayoutDashboard size={20} /> },
   { label: 'My Batches', href: '/batches', icon: <BookOpen size={20} /> },
-  { label: 'Assignments', href: '/assignments', icon: <FileText size={20} /> },
+  { label: 'Quiz', href: '/assignments', icon: <FileText size={20} /> },
   { label: 'AI Doubt Assistant', href: '/ai-doubt-assistant', icon: <Lightbulb size={20} /> },
   { label: 'Schedule', href: '/schedule', icon: <Calendar size={20} /> },
   { label: 'Analytics', href: '/analytics', icon: <BarChart3 size={20} /> },
