@@ -262,8 +262,8 @@ COLORS = {
 
 ```typescript
 FONTS = {
-  DISPLAY: "'Playfair Display', Georgia, serif",  // Headings
-  BODY: "'Poppins', 'Inter', sans-serif",         // Everything else
+  DISPLAY: "'Lora', Georgia, serif",  // Headings
+  BODY: "'Inter', 'system-ui', sans-serif",         // Everything else
 }
 ```
 
@@ -451,16 +451,17 @@ npm run type-check  # See all type errors
 
 ## Next Steps
 
-1. ✅ **Project initialized** with all core components
-2. 🔄 **Add real API endpoints** in `src/services/api.ts`
-3. 📊 **Create additional pages** (Analytics, Students, etc.)
-4. 🧪 **Add tests** in `tests/` directory
-5. 🚀 **Deploy** to Vercel, Netlify, or your platform
+1. ✅ **Project UI Finalized** with all core components and pages.
+2. 🔄 **Backend Integration**: Replace mock functions with APIs (See `BACKEND_INTEGRATION.md`).
+3. 🔐 **Authentication**: Implement NextAuth or Clerk to protect routes.
+4. 🚀 **Deploy** to Vercel, Netlify, or your platform.
 
 ---
 
 ## Resources
 
+- **[PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md)**: Full project overview.
+- **[BACKEND_INTEGRATION.md](./BACKEND_INTEGRATION.md)**: API requirements.
 - [Next.js Documentation](https://nextjs.org/docs)
 - [React Documentation](https://react.dev)
 - [Tailwind CSS](https://tailwindcss.com)

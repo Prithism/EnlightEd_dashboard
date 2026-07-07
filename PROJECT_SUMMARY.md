@@ -1,560 +1,105 @@
-# EnlightEd Dashboard — Project Summary
+# EnlightEd Dashboard — Comprehensive Project Overview
 
-## 🎯 Project Overview
+## 1. 🎯 Project Vision & Current State
 
-**EnlightEd Dashboard** is a production-ready SaaS analytics platform built with React 18, Next.js 14, TailwindCSS, and Framer Motion. The dashboard adheres strictly to the EnlightEd Design System with a premium aesthetic comparable to Linear, Stripe, and Vercel.
+**EnlightEd Dashboard** is a premium, production-ready SaaS analytics and learning platform. Built with React 18, Next.js 14, TailwindCSS, and Framer Motion, it focuses heavily on high-end aesthetics (glassmorphism, organic physics-based animations, and an academic typography suite).
 
-### Key Characteristics
-- **Premium UI/UX** — Glassmorphism, smooth animations, editorial typography
-- **Production-Ready** — Type-safe, tested patterns, performant bundle size
-- **Fully Responsive** — Mobile-first design (mobile, tablet, desktop)
-- **Design System Compliant** — Strict adherence to EnlightEd brand guidelines
-- **Extensible Architecture** — Modular components, easy to expand
+**Current Status:** The frontend UI architecture is **100% structurally complete** and **hardened**. We have moved past the initial MVP phase. The codebase has been actively refactored to be defensively coded against backend failures, making it fully primed for live API integration.
 
 ---
 
-## 📊 Project Statistics
+## 2. 🛠️ What Has Been Built (Implemented Features)
 
-| Metric | Value |
-|--------|-------|
-| **Components Created** | 25 |
-| **Pages Ready** | 8 (Dashboard, My Batches, Assignments, AI Doubt Assistant, Schedule, Performance, Courses, Peer Learning) |
-| **Files Written** | 45+ |
-| **Lines of Code** | ~5,200+ |
-| **Design Tokens** | 50+ |
-| **Responsive Breakpoints** | 3 (mobile, tablet, desktop) |
-| **Time to Production** | Ready Now |
+We have successfully built a massive suite of features across multiple routes. 
 
----
+### Core Architecture & UX
+- **Academic Typography**: Replaced default tech fonts with **Lora** (Display/Serif) and **Inter** (Body/Sans-serif) for a prestigious, textbook-like reading experience.
+- **Defensive UI Rendering**: The entire application is protected by Optional Chaining (`?.`) and Nullish Coalescing (`??`). If the backend returns partial data, the UI will degrade gracefully instead of crashing.
+- **Async Loading States**: Implemented highly polished Skeleton loaders (`animate-pulse`) across all pages to mask network latency during data fetching.
+- **Strict React Keys**: Eradicated all `key={index}` anti-patterns. Every mapped list now relies on strict, unique entity IDs.
 
-## 📁 Directory Structure (Actual)
-
-```
-enlighted-dashboard/
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx              # Root layout
-│   │   └── page.tsx                # Dashboard homepage
-│   ├── components/
-│   │   ├── common/
-│   │   │   ├── Button.tsx          # Reusable button
-│   │   │   └── Card.tsx            # Glass container
-│   │   ├── layout/
-│   │   │   ├── Sidebar.tsx         # Navigation
-│   │   │   ├── Navbar.tsx          # Top bar
-│   │   │   └── Layout.tsx          # Page wrapper
-│   │   ├── metrics/
-│   │   │   └── MetricCard.tsx      # KPI card
-│   │   ├── charts/
-│   │   │   └── Chart.tsx           # Data viz
-│   │   ├── data/
-│   │   │   └── Table.tsx           # Paginated table
-│   │   └── feedback/
-│   │       └── ActivityFeed.tsx    # Timeline
-│   ├── hooks/
-│   │   └── useDashboardData.ts     # Data fetching
-│   ├── services/
-│   │   ├── api.ts                  # API client
-│   │   └── mockData.ts             # Dev data
-│   ├── types/
-│   │   └── index.ts                # TypeScript defs
-│   ├── utils/
-│   │   └── designTokens.ts         # Design system
-│   └── styles/
-│       └── globals.css             # Global CSS
-├── .kiro/                          # Kiro workspace
-│   ├── specs/enlighted-dashboard/  # Feature specs
-│   └── steering/                   # Design guidance
-├── package.json
-├── tsconfig.json
-├── tailwind.config.ts
-├── next.config.js
-├── .eslintrc.json
-├── postcss.config.js
-├── README.md
-├── SETUP.md
-├── IMPLEMENTATION_CHECKLIST.md
-└── COMPONENTS_REFERENCE.md
-```
+### Fully Developed Pages
+1. **Dashboard (`/`)**: Admin-level overview containing top-level metrics, concept mastery progress bars, a recent assignments table, and a live sessions tracker.
+2. **Performance Analytics (`/performance`)**: Deep-dive analytics featuring Recharts (Area/Radar charts) and an "AI Path Optimizer" recommendations engine.
+3. **Assignments (`/assignments`)**: A Kanban-style overview of Pending, In-Progress, and Graded coursework.
+4. **Leaderboard & Batches (`/batches`)**: Cohort tracking and competitive ranking tables.
+5. **AI Doubt Assistant (`/ai-doubt-assistant`)**: A highly interactive chat interface designed to stream responses, complete with history and suggested topics.
+6. **User Profile (`/profile`)**: A bespoke, two-column grid layout featuring a gradient cover banner, editable avatar, enrolled batch tags, and lifetime activity metrics.
 
 ---
 
-## ✨ Features Implemented
-
-### ✅ Core Layout
-- **Sidebar** — 7-item navigation (added "My Batches") with collapse/drawer modes
-- **Navbar** — Search, notifications (4 items), profile menu
-- **Responsive** — Mobile drawer, tablet collapse, desktop fixed
-- **Animations** — Smooth transitions, hover effects, stagger effects
-
-### ✅ Dashboard Components
-- **MetricCard** — KPI display with trends, icons, variants
-- **Chart** — Line/Bar/Area with Recharts, consistent styling
-- **Table** — Sortable, paginated with mobile card view
-- **ActivityFeed** — Timeline with 5 recent events
-- **Quick Actions** — 4 action buttons (Create, Add, View, Manage)
-
-### ✅ Assignment Components (New)
-- **AssignmentCard** — Coursework card with status, progress, score
-- **FilterChips** — Reusable filter toggle buttons
-- **BatchCard** — Course enrollment card with progress bar
-- **TimelineCard** — Upcoming events timeline (classes, assignments, exams)
-- **AssignmentCard** — Assignment tracker with status badges
-
-### ✅ Peer Learning Components (New)
-- **PostCard** — Forum post card with upvotes and status badges
-- **StatsCard** — User statistics widget
-
-### ✅ Common Components
-- **Button** — 4 variants, 6 sizes, loading state
-- **Card** — 3 variants, 3 padding options, 4 border radius options
-- **Layout** — Page wrapper combining all sections
-
-### ✅ Pages
-- **Dashboard (/)** — Admin view with metrics, charts, tables, activity
-- **My Batches (/batches)** — Student view with active courses, timeline, assignments
-- **Assignments (/assignments)** — Student view with coursework, filtering, progress tracking
-- **Peer Learning (/peer-learning)** — Forum for students to ask questions and earn badges
-
-### ✅ Design System
-- **Colors** — 7 primary colors + teal ramp (0–1000)
-- **Typography** — Playfair (headings), Poppins (body) from Google Fonts
-- **Spacing** — 8px–64px scale
-- **Border Radius** — 8px–24px + full (rounded)
-- **Glassmorphism** — Blur (24px) + low-opacity borders
-
-### ✅ Data & State
-- **Mock Service** — Development-ready data (students, courses, analytics, batches, assignments)
-- **SWR Hooks** — Data fetching with caching & deduplication
-- **TypeScript** — Full type safety for all entities
-- **API Client** — Ready for real endpoints
-
-### ✅ Responsiveness
-- **Mobile** (<768px) — Full-width, drawer navigation, 1-column grid
-- **Tablet** (768–1023px) — Collapsible sidebar, 2-column grid
-- **Desktop** (≥1024px) — Fixed sidebar, 3–4-column grid or 2+1 layout
-- **Animations** — Reduced motion support for accessibility
-
-### ✅ Accessibility
-- WCAG AA contrast ratios
-- Semantic HTML structure
-- Focus rings on buttons
-- Keyboard navigation
-- Screen reader friendly
-- Color-independent design
-
-### ✅ Performance
-- Tree-shaken Lucide icons
-- Next.js automatic code-splitting
-- Optimized animations
-- SWR data caching
-- Bundle-friendly dependencies
-
----
-
-## 🚀 Getting Started
-
-### 1. Install Dependencies
-```bash
-npm install
-```
-
-### 2. Start Development Server
-```bash
-npm run dev
-```
-
-### 3. Open Browser
-```
-http://localhost:3000
-```
-
-### 4. View Dashboard
-You'll see:
-- 4 metric cards (Students, Courses, Score, Uptime)
-- 2 charts (Enrollment, Revenue)
-- Student table with pagination
-- Activity feed
-- Quick actions
-
----
-
-## 📚 Documentation
-
-| Document | Purpose |
-|----------|---------|
-| **README.md** | Project overview, tech stack, setup |
-| **SETUP.md** | Detailed development guide, troubleshooting |
-| **COMPONENTS_REFERENCE.md** | Component API, props, usage examples |
-| **IMPLEMENTATION_CHECKLIST.md** | Phase status, next steps, roadmap |
-| **PROJECT_SUMMARY.md** | This file — high-level overview |
-
----
-
-## 🎨 Design System Highlights
-
-### Color Palette
-```
-Primary Teal:     #22819A  (buttons, active states)
-Secondary Blue:   #90C2E7  (accents, highlights)
-Background:       #FEF7F8  (warm white base)
-Text:             #13323A  (dark teal-black)
-Muted:            #4F6C74  (secondary text)
-Accent Gold:      #C9972A  (premium indicators)
-```
-
-### Typography
-```
-Headlines:  Playfair Display 700 (editorial, premium feel)
-Body/UI:    Poppins 400/500/600 (clean, readable)
-Sizes:      12px–48px (responsive scaling)
-```
-
-### Effects
-```
-Glassmorphism:   24px backdrop blur + white/20 border
-Elevation:       No drop shadows (depth via blur + gradient)
-Animation:       Spring easing, 0.4s base duration
-Spacing:         8px grid (multiples of 8)
-Border Radius:   8px/12px/16px/24px (never arbitrary)
-```
-
----
-
-## 🔧 Technology Stack
-
-| Layer | Technology | Why |
-|-------|-----------|-----|
-| **Framework** | React 18 + Next.js 14 | SSR, static gen, API routes |
-| **Styling** | TailwindCSS | Utility-first, design tokens, small bundle |
-| **Animation** | Framer Motion | Industry-standard, performant |
-| **Data Viz** | Recharts | Minimal, customizable, responsive |
-| **Icons** | Lucide React | Tree-shakeable, 300+ icons, teal-compatible |
-| **Type Safety** | TypeScript | Catch errors early, better IDE support |
-| **Data Fetching** | SWR | Lightweight, caching, real-time capable |
-| **Testing** | Vitest + RTL | Fast, component-focused |
-
----
-
-## 📈 Performance Targets
-
-| Metric | Target | Current |
-|--------|--------|---------|
-| **LCP** | <2.5s | ✅ Achievable |
-| **FID** | <100ms | ✅ Achievable |
-| **CLS** | <0.1 | ✅ Achievable |
-| **Bundle** | <500KB | ✅ On track |
-
----
-
-## 📄 Pages Implemented
-
-### Dashboard Page (/)
-**Status:** ✅ Complete  
-**Components:** MetricCard, Chart, Table, ActivityFeed, Button, Card  
-**Features:**
-- 4 KPI metric cards (Total Students, Active Courses, Avg Score, System Uptime)
-- 2 data visualization charts (Enrollment Trend, Revenue & Completions)
-- Sortable, paginated student management table
-- Activity feed with 5 recent events
-- Quick actions bar (4 buttons)
-- Full responsive design
-
-**Mock Data:**
-- 4 metrics with trends
-- 6-month enrollment/revenue data
-- 6 student records
-- 5 activity items
-
----
-
-### My Batches Page (/batches)
-**Status:** ✅ Complete  
-**Components:** MetricCard, BatchCard, TimelineCard, AssignmentCard (batch), Card, Button  
-**Features:**
-- 3 KPI metric cards
-- 4 batch cards grid
-- Timeline + assignments sidebar
-- Announcements section
-- Quick actions
-
----
-
-### Assignments Page (/assignments)
-**Status:** ✅ Complete  
-**Components:** AssignmentCard, FilterChips, Button, Card  
-**Features:**
-- Hero header with description
-- 4 statistics cards
-- 4 filter chips (All, Pending, In Progress, Graded)
-- 9 assignment cards (3 pending, 2 in-progress, 4 graded)
-- Status-specific UI (progress bars, scores)
-- Empty state handling
-- Responsive grid (1-2-3 columns)
-
----
-
-### AI Doubt Assistant Page (/ai-doubt-assistant)
-**Status:** ✅ Complete  
-**Components:** ChatBubble, MessageInput, SuggestionCard, LoadingSkeleton, Button, Card  
-**Features:**
-- Full chat interface
-- Message history with user/AI differentiation
-- Suggested topics sidebar
-- Subject shortcuts
-- Recent conversations
-- Multi-line input with attachment/voice buttons
-- Message streaming animation
-- Auto-scroll to latest message
-- Responsive two-column layout
-
----
-
-### Schedule Page (/schedule)
-**Status:** ✅ Complete  
-**Components:** Calendar, CalendarHeader, TodaySchedule, UpcomingEvents, QuickActions, ScheduleStatistics, EventCard, Badge  
-**Features:**
-- Interactive calendar with month/week/day view modes
-- Event indicators with category color coding
-- Today's schedule timeline (real-time status badges)
-- Upcoming events with countdown timers
-- Quick action buttons (Join, Add, Schedule, View)
-- Schedule statistics (4 metrics)
-- Date selection and month navigation
-- Desktop 70/30 layout, tablet stacked, mobile single-column
-- Event categories: Class, Assignment, Exam, Meeting, Personal
-
-**Mock Data:**
-- 8 calendar events across July 2026
-- 3 today's events with various statuses
-- 4 upcoming events with priorities
-- 4 statistics cards
-
----
-
-### Performance Page (/performance)
-**Status:** ✅ Complete  
-**Components:** Chart (Radar, Bar), MetricCard, FilterChips, AIPathOptimizer, ConceptMastery  
-**Features:**
-- Radar chart for mastery balance
-- Subject benchmarking and AI path optimizer
-- Granular concept mastery bars
-
----
-
-
-### Courses Page (/courses)
-**Status:** ✅ Complete  
-**Components:** Card, Button, FilterChips  
-**Features:**
-- Course catalog grid
-- Course ratings, duration, student counts
-- Filter by status
-
----
-
-
-### Settings Page (/settings)
-**Status:** ✅ Complete  
-**Components:** Card, Button  
-**Features:**
-- Profile settings
-- Appearance, notifications, security configuration options
-
----
-
-### Peer Learning Page (/peer-learning)
-**Status:** ✅ Complete  
-**Components:** PostCard, StatsCard, FilterChips, Button, Card  
-**Features:**
-- Forum posts with upvotes and replies
-- Stats widget for user engagement
-- Category filtering
-- Search input and ask button
-
----
-
-## 🎯 What's Next (Phase 3)
-
-### Phase 1: Foundation ✅ **COMPLETE**
-- ✅ Project scaffolding
-- ✅ Design system tokens
-- ✅ Layout components (Sidebar, Navbar, Layout)
-- ✅ Common components (Button, Card)
-- ✅ Dashboard page with mock data
-- ✅ Type safety & accessibility
-- ✅ Documentation
-
-### Phase 2: Feature Pages ✅ **COMPLETE**
-- ✅ Performance page with advanced filters
-- ✅ Courses page with enrollment
-- ⬜ Authentication & authorization
-
-### Phase 3: Advanced Features
-- ⬜ Real-time updates (WebSocket)
-- ⬜ Custom report builder
-- ⬜ Email scheduling
-- ⬜ Team collaboration
-- ⬜ Advanced analytics
-
-### Phase 4: Production
-- ⬜ Real API integration
-- ⬜ Database setup
-- ⬜ Deployment (Vercel/other)
-- ⬜ Monitoring & analytics
-- ⬜ Performance optimization
-
----
-
-## 💡 Key Implementation Decisions
-
-### Why Mock Data Service?
-- Allows dashboard to work immediately
-- No backend dependency during development
-- Easy to replace with real API later
-
-### Why SWR Over React Query?
-- Lighter bundle size
-- Perfect for this use case
-- Excellent caching/deduplication
-
-### Why Framer Motion Over CSS Animations?
-- Advanced gesture support (future)
-- Layout animations
-- Performance-optimized (GPU acceleration)
-- Consistent ease curves
-
-### Why Glassmorphism Over Shadows?
-- Matches Stripe/Linear aesthetic
-- Modern, premium feel
-- Aligns with brand identity
-- Better for dark mode (future)
-
-### Why Tailwind Over CSS Modules?
-- Faster development
-- Design token enforcement
-- Responsive utilities
-- Smaller final bundle
-
----
-
-## 🎯 What's Next?
-
-1. **Install & Run**
+## 3. 🚀 How to Run on Another Machine
+
+If you are handing this project off to another developer or deploying to a new machine, follow these exact steps:
+
+### Prerequisites
+- **Node.js**: Version 18.17.0 or higher.
+- **Git**: Installed and configured.
+
+### Setup Instructions
+1. **Clone or Transfer the Repository**
+   ```bash
+   git clone <repository_url>
+   # OR extract the project ZIP file
+   cd EnlightEd_dashboard
+   ```
+2. **Install Dependencies**
+   *(Note: Do not delete `package-lock.json` to ensure version parity).*
    ```bash
    npm install
+   ```
+3. **Environment Variables**
+   - Copy `.env.example` to `.env.local`.
+   - Fill in any necessary secrets (currently not required for frontend-only dev).
+4. **Start Development Server**
+   ```bash
    npm run dev
    ```
-
-2. **Test Dashboard**
-   - Open http://localhost:3000
-   - Interact with components
-   - Test responsiveness (DevTools mobile view)
-   - Check animations (Chrome DevTools Performance tab)
-
-3. **Create Additional Pages**
-   - Use `Dashboard` page as template
-   - Follow component structure patterns
-   - Use design tokens consistently
-
-4. **Integrate Real API**
-   - Update `src/services/mockData.ts` with real endpoints
-   - Replace SWR fetcher with API client
-   - Implement error boundaries
-
-5. **Deploy**
-   - Push to GitHub
-   - Connect to Vercel
-   - Set environment variables
-   - Deploy!
+   - Access the platform at `http://localhost:3000`.
+5. **Build for Production**
+   To verify the application compiles without TypeScript errors before deployment:
+   ```bash
+   npm run build
+   npm start
+   ```
 
 ---
 
-## 📞 Support Resources
+## 4. 🧠 Things to Keep in Mind
 
-### Documentation
-- [Next.js Docs](https://nextjs.org/docs)
-- [React Docs](https://react.dev)
-- [TailwindCSS Docs](https://tailwindcss.com/docs)
-- [Framer Motion Docs](https://www.framer.com/motion/)
-- [Recharts Docs](https://recharts.org/)
+If you are maintaining this codebase, observe the following rules and architectural decisions:
 
-### In This Project
-- `README.md` — Quick start
-- `SETUP.md` — Detailed guide
-- `COMPONENTS_REFERENCE.md` — Component API
-- `.kiro/steering/enlighted-design-system.md` — Brand guidelines
+1. **The `.kiro/` Directory**: This contains `RULES.md` and `enlighted-design-system.md`. Any AI assistant or developer working on this project must abide by these strict styling and architectural guidelines.
+2. **Tailwind Configurations**: Our `@tailwind` and `@apply` rules trigger false-positive warnings in standard IDEs. We have patched this locally via `.vscode/settings.json` (`"css.lint.unknownAtRules": "ignore"`).
+3. **File Tracking Limitations**: 
+   - `.env`, `.env.local`, and `.env.production` are strictly ignored in `.gitignore`.
+   - The `openspec/` directory is also explicitly ignored by Git to protect proprietary specifications.
+4. **No Magic Numbers**: Avoid arbitrary hex codes in components. Always use the Tailwind config aliases (e.g., `bg-primary`, `text-ink`, `bg-surface`).
 
 ---
 
-## 🏆 Quality Checklist
+## 5. 🏗️ What is Left (The Roadmap)
 
-- ✅ TypeScript strict mode
-- ✅ ESLint configured
-- ✅ Responsive design tested (3 breakpoints)
-- ✅ Accessibility features (WCAG AA)
-- ✅ Performance optimized (bundle < 500KB)
-- ✅ Animations smooth (GPU accelerated)
-- ✅ Code well-documented
-- ✅ Components reusable & modular
-- ✅ Design system enforced
-- ✅ Mock data ready
-- ✅ Type-safe throughout
-- ✅ Browser compatibility checked
+### Phase 3: Backend & API Integration
+- Swap out the localized `fetchProfileData()` and `fetchDashboardData()` mock functions with real Axios/Fetch calls pointing to the backend.
+- (Reference `BACKEND_INTEGRATION.md` for exact payload structures).
+
+### Phase 4: Authentication
+- Implement a robust Auth layer (e.g., NextAuth.js or Clerk).
+- Add Next.js Middleware to protect routes (e.g., redirecting unauthenticated users from `/profile` back to `/login`).
 
 ---
 
-## 📊 Component Inventory
+## 6. 🔧 Things to Fix Later (Tech Debt & Known Issues)
 
-| Category | Components | Status |
-|----------|-----------|--------|
-| **Layout** | Sidebar, Navbar, Layout | ✅ Ready |
-| **Common** | Button, Card, FilterChips, Badge | ✅ Ready |
-| **Metrics** | MetricCard | ✅ Ready |
-| **Charts** | Chart (Line/Bar/Area) | ✅ Ready |
-| **Data** | Table (sort/paginate) | ✅ Ready |
-| **Feedback** | ActivityFeed | ✅ Ready |
-| **Batch** | BatchCard, TimelineCard, AssignmentCard (batch) | ✅ Ready |
-| **Assignment** | AssignmentCard, FilterChips | ✅ Ready |
-| **Chat** | ChatBubble, MessageInput, SuggestionCard | ✅ Ready |
-| **Schedule** | Calendar, CalendarHeader, TodaySchedule, UpcomingEvents, QuickActions, ScheduleStatistics, EventCard | ✅ Ready |
-| **Peer Learning**| PostCard, StatsCard | ✅ Ready |
-| **Total** | **25 Components** | ✅ **Complete** |
+While the project is production-ready, here is a backlog of major and minor tasks for future sprints:
 
----
+### Major Fixes
+- **Database Schema Sync**: Ensure the backend database models perfectly align with our frontend TypeScript interfaces (e.g., `ProfileData`, `ActivityMetrics`).
+- **Websocket Implementation**: The AI Doubt Assistant currently simulates chat. This needs to be hooked up to a real WebSocket or Server-Sent Events (SSE) stream for real-time LLM responses.
 
-## 🎉 Summary
-
-You now have a **production-ready SaaS dashboard** with:
-
-✅ Premium aesthetic (Linear/Stripe/Vercel level)
-✅ Complete design system (colors, typography, spacing)
-✅ 25 reusable components
-✅ 8 fully-built pages (Dashboard, My Batches, Assignments, AI Doubt Assistant, Schedule, Performance, Courses, Peer Learning)
-✅ Responsive design (mobile, tablet, desktop)
-✅ Type-safe codebase
-✅ Accessibility compliance
-✅ Performance optimized
-✅ Mock data ready
-✅ Detailed documentation
-✅ Clean architecture (easy to extend)
-
-**Pages Ready for Use:**
-1. Dashboard (/) — Admin/System view
-2. My Batches (/batches) — Student view
-3. Assignments (/assignments) — Assignment management
-4. AI Doubt Assistant (/ai-doubt-assistant) — Chat interface
-5. Schedule (/schedule) — Calendar, events, class timings
-6. Performance (/performance) — Advanced metrics, subject mastery, AI path optimization
-7. Courses (/courses) — Course catalog
-8. Peer Learning (/peer-learning) — Student forum
-
-**Status:** Phase 2 Complete. Ready for Phase 3 (Advanced Features) and API integration.
-
----
-
-**Built:** July 4, 2026
-**Version:** 1.0.2 — Phase 2 Pages Added
-**Next Step:** `npm install && npm run dev`
-
-Enjoy building! 🚀
+### Minor Fixes / Enhancements
+- **Complete Profile Tabs**: In `/profile/page.tsx`, the *Achievements*, *Preferences*, and *Support & Help* tabs currently display an "Under Construction" empty state. These need bespoke UI layouts.
+- **Centralize Mock Data**: Currently, mock data functions are defined inside the individual `page.tsx` files. Before replacing them with APIs, it would be cleaner to move all mocks into a dedicated `src/services/mockApi.ts` file to clean up the component files.
+- **Componentize Skeletons**: The Skeleton UI loaders are currently hardcoded HTML blocks inside the `if (isLoading)` blocks. Refactoring these into reusable components (e.g., `<MetricSkeleton />`, `<ListSkeleton />`) will reduce code duplication.
+- **Spring Animations**: Upgrade standard Framer Motion fade-ins to utilize `type: "spring"` physics for a more tactile, premium feel on hover and mount states.

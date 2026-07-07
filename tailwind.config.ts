@@ -25,8 +25,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["'Playfair Display'", 'Georgia', 'serif'],
-        body: ["'Poppins'", "'Inter'", 'sans-serif'],
+        display: ["'Lora'", 'Georgia', 'serif'],
+        body: ["'Inter'", 'system-ui', 'sans-serif'],
       },
       fontSize: {
         xs: '12px',

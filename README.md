@@ -39,8 +39,8 @@ Accent (Gold):   #C9972A
 
 ## Typography
 
-- **Headlines** — Playfair Display (700)
-- **Body & UI** — Poppins (400, 500, 600)
+- **Headlines** — Lora (Serif)
+- **Body & UI** — Inter (Sans-serif)
 - **Sizes** — 12px to 48px, responsive scaling
 
 ## Getting Started
@@ -162,8 +162,8 @@ export const COLORS = {
 }
 
 export const FONTS = {
-  DISPLAY: "'Playfair Display', Georgia, serif",
-  BODY: "'Poppins', 'Inter', sans-serif",
+  DISPLAY: "'Lora', Georgia, serif",
+  BODY: "'Inter', 'system-ui', sans-serif",
 }
 
 export const SPACING = {
@@ -229,9 +229,14 @@ npm test             # Run tests
 
 MIT
 
-## Support
+## Documentation & Support
 
-For issues, questions, or feature requests, please contact support@enlighted.co.in or visit the [documentation](#).
+Please review the primary engineering documents:
+- **[PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md)** — Comprehensive state of the project, architecture, and roadmap.
+- **[BACKEND_INTEGRATION.md](./BACKEND_INTEGRATION.md)** — Strict API payload requirements and dynamic UI mapping.
+- **[SETUP.md](./SETUP.md)** — Detailed development guide.
+
+For other issues, please contact support@enlighted.co.in.
 
 ---
 
