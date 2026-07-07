@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, Bell, User, Settings, LogOut, HelpCircle } from 'lucide-react'
+import { Search, Bell, User, Settings, LogOut, HelpCircle, X } from 'lucide-react'
 import { Card } from '@/components/common/Card'
 
 interface NavbarProps {
@@ -10,6 +10,7 @@ interface NavbarProps {
   notificationCount?: number
   onSearch?: (query: string) => void
   onLogout?: () => void
+  isCollapsed?: boolean
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -17,6 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   notificationCount = 0,
   onSearch,
   onLogout,
+  isCollapsed = false,
 }) => {
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -36,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   }
 
   return (
-    <nav className="fixed top-0 right-0 left-0 lg:left-64 h-18 glass z-40 border-b border-white/10">
+    <nav className={`fixed top-0 right-0 left-0 ${isCollapsed ? 'lg:left-20' : 'lg:left-64'} h-18 glass z-40 border-b border-white/10 transition-all duration-300`}>
       <div className="h-full px-6 flex items-center justify-between">
         {/* Left: Title */}
         <div className="hidden md:flex flex-col">
@@ -61,19 +63,24 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="absolute right-0"
                 >
                   <div className="relative">
+                    <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
                     <input
                       type="text"
                       placeholder="Search..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       autoFocus
-                      className="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-ink placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+                      className="w-full pl-9 pr-8 py-2 rounded-lg bg-white/10 border border-white/20 text-ink placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                     />
                     <button
-                      type="submit"
-                      className="absolute right-2 top-1/2 -translate-y-1/2 text-primary hover:text-teal-700 transition-colors"
+                      type="button"
+                      onClick={() => {
+                        setSearchOpen(false)
+                        setSearchQuery('')
+                      }}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-primary hover:text-teal-700 transition-colors p-1"
                     >
-                      <Search size={18} />
+                      <X size={16} />
                     </button>
                   </div>
                 </motion.form>

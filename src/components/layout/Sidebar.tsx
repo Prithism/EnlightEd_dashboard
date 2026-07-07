@@ -5,17 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import {
   LayoutDashboard,
-  BarChart3,
   Users,
   BookOpen,
   FileText,
-  Settings,
   ChevronLeft,
   ChevronRight,
   Menu,
   X,
   Lightbulb,
   Calendar,
+  PieChart,
+  Shield,
 } from 'lucide-react'
 
 interface NavItem {
@@ -30,19 +30,19 @@ const navItems: NavItem[] = [
   { label: 'Quiz', href: '/assignments', icon: <FileText size={20} /> },
   { label: 'AI Doubt Assistant', href: '/ai-doubt-assistant', icon: <Lightbulb size={20} /> },
   { label: 'Schedule', href: '/schedule', icon: <Calendar size={20} /> },
-  { label: 'Analytics', href: '/analytics', icon: <BarChart3 size={20} /> },
-  { label: 'Students', href: '/students', icon: <Users size={20} /> },
+  { label: 'Peer Learning', href: '/peer-learning', icon: <Users size={20} /> },
+  { label: 'Performance', href: '/performance', icon: <PieChart size={20} /> },
   { label: 'Courses', href: '/courses', icon: <BookOpen size={20} /> },
-  { label: 'Reports', href: '/reports', icon: <FileText size={20} /> },
-  { label: 'Settings', href: '/settings', icon: <Settings size={20} /> },
+  { label: 'E-Raksha', href: '#', icon: <Shield size={20} /> },
 ]
 
 interface SidebarProps {
   activeRoute?: string
+  isCollapsed?: boolean
+  onToggleCollapse?: () => void
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/' }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false)
+export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/', isCollapsed = false, onToggleCollapse }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [isMobile, setIsMobile] = React.useState(false)
 
@@ -73,9 +73,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/' }) => {
           </div>
           {!isCollapsed && <span className="font-display font-bold text-ink text-lg">EnlightEd</span>}
         </div>
-        {!isMobile && (
+        {!isMobile && onToggleCollapse && (
           <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={onToggleCollapse}
             className="text-primary hover:bg-primary/10 p-1 rounded-lg transition-colors"
             aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
@@ -185,7 +185,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/' }) => {
   return (
     <aside
       className={`fixed left-0 top-0 h-screen glass flex flex-col transition-all duration-300 ${
-        isCollapsed ? 'w-20' : 'w-64 lg:w-80'
+        isCollapsed ? 'w-20' : 'w-64'
       } hidden lg:flex border-r border-white/10`}
     >
       <SidebarContent />

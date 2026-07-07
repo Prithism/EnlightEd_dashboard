@@ -14,6 +14,11 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
 } from 'recharts'
 import { Card } from '@/components/common/Card'
 import { COLORS } from '@/utils/designTokens'
@@ -26,7 +31,7 @@ export interface ChartDataPoint {
 interface ChartProps {
   title: string
   data: ChartDataPoint[]
-  type: 'line' | 'bar' | 'area'
+  type: 'line' | 'bar' | 'area' | 'radar'
   dataKeys: string[]
   colors?: string[]
   height?: number
@@ -163,6 +168,29 @@ export const Chart: React.FC<ChartProps> = ({
                 />
               ))}
             </AreaChart>
+          </ResponsiveContainer>
+        )
+
+      case 'radar':
+        return (
+          <ResponsiveContainer width="100%" height={height}>
+            <RadarChart cx="50%" cy="50%" outerRadius="80%" {...commonProps}>
+              <PolarGrid stroke="rgba(255, 255, 255, 0.1)" />
+              <PolarAngleAxis dataKey="name" tick={{ fill: 'rgba(255, 255, 255, 0.7)', fontSize: 12 }} />
+              <PolarRadiusAxis tick={false} axisLine={false} />
+              {tooltip && <Tooltip {...tooltipProps} />}
+              {dataKeys.map((key, idx) => (
+                <Radar
+                  key={key}
+                  name={key}
+                  dataKey={key}
+                  stroke={colors[idx] || colors[0]}
+                  fill={colors[idx] || colors[0]}
+                  fillOpacity={0.4}
+                  isAnimationActive={animation}
+                />
+              ))}
+            </RadarChart>
           </ResponsiveContainer>
         )
 

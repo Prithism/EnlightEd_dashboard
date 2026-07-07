@@ -197,9 +197,9 @@ export default function AiDoubtAssistantPage() {
               <Card padding="lg">
                 <h3 className="font-body font-semibold text-ink mb-3">Suggested Topics</h3>
                 <div className="space-y-2">
-                  {suggestedTopics.map((topic, idx) => (
+                  {suggestedTopics.map((topic) => (
                     <SuggestionCard
-                      key={idx}
+                      key={topic.title}
                       icon={<span className="text-lg">{topic.icon}</span>}
                       title={topic.title}
                       description={topic.description}
@@ -213,9 +213,9 @@ export default function AiDoubtAssistantPage() {
               <Card padding="lg">
                 <h3 className="font-body font-semibold text-ink mb-3">Quick Subjects</h3>
                 <div className="grid grid-cols-2 gap-2">
-                  {subjectShortcuts.map((subject, idx) => (
+                  {subjectShortcuts.map((subject) => (
                     <Button
-                      key={idx}
+                      key={subject.label}
                       variant="secondary"
                       size="sm"
                       className="w-full justify-start gap-2"
@@ -231,9 +231,9 @@ export default function AiDoubtAssistantPage() {
               <Card padding="lg">
                 <h3 className="font-body font-semibold text-ink mb-3">Recent Doubts</h3>
                 <div className="space-y-2">
-                  {recentDoubts.map((doubt, idx) => (
+                  {recentDoubts.map((doubt) => (
                     <button
-                      key={idx}
+                      key={doubt}
                       onClick={() => handleSuggestedTopic(doubt)}
                       className="w-full text-left p-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-muted hover:text-primary font-body"
                     >

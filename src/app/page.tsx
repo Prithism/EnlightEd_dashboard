@@ -1,297 +1,213 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import {
-  Users,
-  BookOpen,
-  TrendingUp,
-  Award,
-} from 'lucide-react'
+import { Flame, Trophy, Zap, Award, RefreshCw } from 'lucide-react'
 import { Layout } from '@/components/layout/Layout'
-import { MetricCard } from '@/components/metrics/MetricCard'
 import { Chart } from '@/components/charts/Chart'
-import { Table, type TableColumn } from '@/components/data/Table'
-import { ActivityFeed, type ActivityItem } from '@/components/feedback/ActivityFeed'
-import { Card } from '@/components/common/Card'
-import { Button } from '@/components/common/Button'
+import { StudentMetricCard } from '@/components/dashboard/StudentMetricCard'
+import { AIGrowthInsights } from '@/components/dashboard/AIGrowthInsights'
+import { DashboardConceptMastery } from '@/components/dashboard/DashboardConceptMastery'
+import { LiveSessionsList } from '@/components/dashboard/LiveSessionsList'
 import { ANIMATION } from '@/utils/designTokens'
 
-// Mock data
-const metricsData = [
-  {
-    label: 'Total Students',
-    value: '1,250',
-    trend: { direction: 'up' as const, percentage: 12 },
-    icon: <Users size={24} />,
-  },
-  {
-    label: 'Active Courses',
-    value: '42',
-    trend: { direction: 'up' as const, percentage: 8 },
-    icon: <BookOpen size={24} />,
-  },
-  {
-    label: 'Avg Score',
-    value: '78.5%',
-    trend: { direction: 'down' as const, percentage: 3 },
-    icon: <Award size={24} />,
-  },
-  {
-    label: 'System Uptime',
-    value: '99.9%',
-    trend: { direction: 'up' as const, percentage: 0.2 },
-    icon: <TrendingUp size={24} />,
-    variant: 'highlighted' as const,
-  },
-]
-
-const chartData = [
-  { name: 'Jan', students: 400, revenue: 2400, completions: 240 },
-  { name: 'Feb', students: 520, revenue: 2210, completions: 221 },
-  { name: 'Mar', students: 680, revenue: 2290, completions: 229 },
-  { name: 'Apr', students: 890, revenue: 2000, completions: 200 },
-  { name: 'May', students: 1050, revenue: 2181, completions: 218 },
-  { name: 'Jun', students: 1250, revenue: 2500, completions: 250 },
-]
-
-const studentsTableColumns: TableColumn[] = [
-  { key: 'name', label: 'Name', width: '200px', sortable: true },
-  { key: 'email', label: 'Email', width: '240px' },
-  { key: 'course', label: 'Course', width: '160px', sortable: true },
-  { key: 'progress', label: 'Progress', width: '120px' },
-  {
-    key: 'status',
-    label: 'Status',
-    width: '120px',
-    render: (value) => {
-      const statusClasses = {
-        active: 'bg-secondary text-white',
-        inactive: 'bg-muted/20 text-muted',
-        completed: 'bg-gold text-white',
-      }
-      return (
-        <span className={`px-3 py-1 rounded-lg text-xs font-semibold ${statusClasses[value as keyof typeof statusClasses] || statusClasses.inactive}`}>
-          {value as string}
-        </span>
-      )
-    },
-  },
-]
-
-const studentsTableData = [
-  {
-    id: 1,
-    name: 'Sarah Johnson',
-    email: 'sarah.johnson@example.com',
-    course: 'Biology 101',
-    progress: '85%',
-    status: 'active',
-  },
-  {
-    id: 2,
-    name: 'Michael Chen',
-    email: 'michael.chen@example.com',
-    course: 'Chemistry 201',
-    progress: '92%',
-    status: 'active',
-  },
-  {
-    id: 3,
-    name: 'Emma Rodriguez',
-    email: 'emma.rodriguez@example.com',
-    course: 'Physics 101',
-    progress: '100%',
-    status: 'completed',
-  },
-  {
-    id: 4,
-    name: 'James Wilson',
-    email: 'james.wilson@example.com',
-    course: 'Mathematics 301',
-    progress: '65%',
-    status: 'active',
-  },
-  {
-    id: 5,
-    name: 'Olivia Brown',
-    email: 'olivia.brown@example.com',
-    course: 'Biology 101',
-    progress: '78%',
-    status: 'active',
-  },
-  {
-    id: 6,
-    name: 'Ethan Davis',
-    email: 'ethan.davis@example.com',
-    course: 'Chemistry 201',
-    progress: '45%',
-    status: 'inactive',
-  },
-]
-
-const activityItems: ActivityItem[] = [
-  {
-    id: '1',
-    timestamp: '2 hours ago',
-    actor: 'Sarah Johnson',
-    action: 'completed Biology 101 course',
-    type: 'success',
-  },
-  {
-    id: '2',
-    timestamp: '4 hours ago',
-    actor: 'Michael Chen',
-    action: 'scored 92% on Chemistry quiz',
-    type: 'success',
-  },
-  {
-    id: '3',
-    timestamp: '1 day ago',
-    actor: 'System',
-    action: 'maintenance scheduled for tonight',
-    type: 'warning',
-  },
-  {
-    id: '4',
-    timestamp: '2 days ago',
-    actor: 'Admin',
-    action: 'uploaded new course materials',
-    type: 'neutral',
-  },
-  {
-    id: '5',
-    timestamp: '3 days ago',
-    actor: 'Emma Rodriguez',
-    action: 'enrolled in Physics 101',
-    type: 'success',
-  },
-]
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: ANIMATION.DURATION_LONG,
-      ease: ANIMATION.EASING_SPRING,
-    },
-  },
+// Simulated Backend Data Source
+const generateDashboardData = () => {
+  return {
+    metrics: [
+      { 
+        label: 'LEARNING STREAK', 
+        value: '7 Days', 
+        subtext: 'Next goal: 10 Days', 
+        icon: <Flame size={20} className="text-orange-500" />, 
+        iconColorClass: 'text-orange-500 bg-orange-500/10',
+        progress: 70 
+      },
+      { 
+        label: 'CURRENT STANDING', 
+        value: '12th / 38', 
+        subtext: 'Mathematics Mastery Batch', 
+        icon: <Trophy size={20} className="text-yellow-500" />,
+        iconColorClass: 'text-yellow-500 bg-yellow-500/10',
+        trend: '+12%' 
+      },
+      { 
+        label: 'QUIZ SCORE AVG', 
+        value: '24.5 / 30', 
+        subtext: 'Last 5 Assessments', 
+        icon: <Zap size={20} className="text-blue-400" fill="currentColor" />, 
+        iconColorClass: 'text-blue-400 bg-blue-400/10',
+        trend: '+12%' 
+      },
+      { 
+        label: 'MASTERY INDEX', 
+        value: '84%', 
+        subtext: 'Across all chapters', 
+        icon: <Award size={20} className="text-purple-400" />, 
+        iconColorClass: 'text-purple-400 bg-purple-400/10',
+        trend: '+12%' 
+      },
+    ],
+    scoreProgression: [
+      { name: 'Mon', score: 65 },
+      { name: 'Tue', score: 78 },
+      { name: 'Wed', score: 72 },
+      { name: 'Thu', score: 85 },
+      { name: 'Fri', score: 92 },
+      { name: 'Sat', score: 88 },
+      { name: 'Sun', score: 95 },
+    ],
+    aiInsight: 'Focus on active recall for your Science chapters this week.',
+    conceptMastery: [
+      { name: 'ALGEBRA', proficiency: 95 },
+      { name: 'QUADRATIC EQ', proficiency: 42 },
+      { name: 'ATOMIC STRUCTURE', proficiency: 88 },
+      { name: 'THERMODYNAMICS', proficiency: 65 },
+    ],
+    liveSessions: [
+      { time: '04:00 PM', title: 'Quadratic Equations Final Recap', subtitle: 'MATH 9A • LIVE ROOM 1' },
+      { time: '06:00 PM', title: 'Atomic Structures - Advanced', subtitle: 'SCIENCE 9B • LIVE ROOM 2' },
+    ],
+  }
 }
 
 export default function DashboardPage() {
+  const [data, setData] = useState<ReturnType<typeof generateDashboardData> | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate backend API latency
+    const timer = setTimeout(() => {
+      setData(generateDashboardData())
+      setIsLoading(false)
+    }, 1200)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: ANIMATION.DURATION_LONG,
+        ease: ANIMATION.EASING_SPRING,
+      },
+    },
+  }
+
+  if (isLoading || !data) {
+    return (
+      <Layout title="Dashboard" activeRoute="/">
+        <div className="space-y-6 animate-pulse">
+          <div className="flex justify-between items-center mb-2">
+            <div className="h-10 w-48 bg-white/10 rounded-xl"></div>
+            <div className="h-10 w-48 bg-white/10 rounded-xl hidden md:block"></div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="h-32 bg-white/5 border border-white/5 rounded-2xl"></div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
+            <div className="xl:col-span-8 flex flex-col gap-6">
+              <div className="h-80 bg-white/5 border border-white/5 rounded-2xl"></div>
+              <div className="h-64 bg-white/5 border border-white/5 rounded-2xl"></div>
+            </div>
+            <div className="xl:col-span-4 flex flex-col gap-6">
+              <div className="h-48 bg-white/5 border border-white/5 rounded-3xl"></div>
+              <div className="h-96 bg-white/5 border border-white/5 rounded-2xl"></div>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    )
+  }
+
   return (
     <Layout title="Dashboard" activeRoute="/">
       <motion.div
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="space-y-8"
+        className="space-y-6"
       >
         {/* Page Header */}
-        <motion.div variants={itemVariants}>
-          <div className="flex items-start justify-between">
-            <div>
-              <h1 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">
-                Dashboard
-              </h1>
-              <p className="text-muted font-body">
-                Welcome back! Here&apos;s your academy overview for this month.
-              </p>
+        <motion.div variants={itemVariants} className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-2">
+          <h1 className="font-display font-bold text-3xl md:text-4xl text-ink">
+            Dashboard
+          </h1>
+          
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 bg-surface border border-white/5 px-4 py-2 rounded-xl">
+              <span className="text-muted text-xs font-bold tracking-wider uppercase">Multi-device sync:</span>
+              <span className="text-muted text-xs font-bold tracking-wider uppercase mr-1">Active</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
             </div>
-            <Button variant="primary" size="lg">
-              Export Report
-            </Button>
+            <button className="bg-surface border border-white/5 p-2 rounded-xl text-muted hover:text-ink transition-colors">
+              <RefreshCw size={18} />
+            </button>
           </div>
         </motion.div>
 
         {/* Metrics Grid */}
         <motion.div variants={itemVariants}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-responsive">
-            {metricsData.map((metric, idx) => (
-              <MetricCard
-                key={idx}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {data.metrics.map((metric) => (
+              <StudentMetricCard
+                key={metric.label}
                 label={metric.label}
                 value={metric.value}
-                trend={metric.trend}
+                subtext={metric.subtext}
                 icon={metric.icon}
-                variant={metric.variant}
+                iconColorClass={metric.iconColorClass}
+                trend={metric.trend}
+                progress={metric.progress}
               />
             ))}
           </div>
         </motion.div>
 
-        {/* Charts Row */}
-        <motion.div variants={itemVariants}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-responsive">
+        {/* Main Content Grid */}
+        <motion.div variants={itemVariants} className="grid grid-cols-1 xl:grid-cols-12 gap-6">
+          
+          {/* Left Column (Chart + Sessions) */}
+          <div className="xl:col-span-8 flex flex-col gap-6">
             <Chart
-              title="Student Enrollment Trend"
-              data={chartData}
-              type="line"
-              dataKeys={['students']}
-              height={300}
+              title="Score Progression"
+              data={data.scoreProgression}
+              type="area"
+              dataKeys={['score']}
+              height={320}
+              colors={['#25B0A2']}
             />
-            <Chart
-              title="Revenue & Completions"
-              data={chartData}
-              type="bar"
-              dataKeys={['revenue', 'completions']}
-              height={300}
-            />
+            <LiveSessionsList sessions={data.liveSessions} />
           </div>
+
+          {/* Right Column (Insights + Mastery) */}
+          <div className="xl:col-span-4 flex flex-col gap-6">
+            <AIGrowthInsights insightText={data.aiInsight} />
+            <div className="flex-grow">
+              <DashboardConceptMastery topics={data.conceptMastery} />
+            </div>
+          </div>
+          
         </motion.div>
 
-        {/* Activity & Quick Stats */}
-        <motion.div variants={itemVariants}>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-responsive">
-            <div className="lg:col-span-2">
-              <Table
-                title="Student Management"
-                columns={studentsTableColumns}
-                data={studentsTableData}
-                pageSize={5}
-              />
-            </div>
-            <ActivityFeed items={activityItems} title="Recent Activity" maxItems={5} />
-          </div>
-        </motion.div>
-
-        {/* Quick Actions */}
-        <motion.div variants={itemVariants}>
-          <Card padding="lg">
-            <h2 className="font-display font-bold text-xl text-ink mb-4">Quick Actions</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Button variant="secondary" className="w-full">
-                <BookOpen size={18} className="mr-2" />
-                Create Course
-              </Button>
-              <Button variant="secondary" className="w-full">
-                <Users size={18} className="mr-2" />
-                Add Student
-              </Button>
-              <Button variant="secondary" className="w-full">
-                <TrendingUp size={18} className="mr-2" />
-                View Analytics
-              </Button>
-              <Button variant="secondary" className="w-full">
-                <Award size={18} className="mr-2" />
-                Manage Certificates
-              </Button>
-            </div>
-          </Card>
-        </motion.div>
       </motion.div>
     </Layout>
   )

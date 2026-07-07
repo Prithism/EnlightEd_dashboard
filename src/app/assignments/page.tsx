@@ -206,9 +206,9 @@ export default function AssignmentsPage() {
               { label: 'Pending', value: stats.pending, color: 'text-gold' },
               { label: 'In Progress', value: stats.inProgress, color: 'text-primary' },
               { label: 'Graded', value: stats.graded, color: 'text-secondary' },
-            ].map((stat, idx) => (
+            ].map((stat) => (
               <div
-                key={idx}
+                key={stat.label}
                 className="p-4 rounded-xl glass border-l-4"
                 style={{
                   borderLeftColor:

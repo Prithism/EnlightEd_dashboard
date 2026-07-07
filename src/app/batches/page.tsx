@@ -231,9 +231,9 @@ export default function MyBatchesPage() {
         {/* Metrics Row */}
         <motion.div variants={itemVariants}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-responsive">
-            {metricsData.map((metric, idx) => (
+            {metricsData.map((metric) => (
               <MetricCard
-                key={idx}
+                key={metric.label}
                 label={metric.label}
                 value={metric.value}
                 trend={metric.trend}

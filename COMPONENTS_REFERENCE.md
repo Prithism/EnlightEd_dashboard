@@ -209,6 +209,45 @@ import { Users } from 'lucide-react'
 - `area` — Area chart
 
 **Features:**
+- Responsive SVG rendering using Recharts
+- Supported types: Line, Bar, Area, Radar
+- Theming integration with CSS variables
+- Fluid animations
+- Custom tooltips
+
+---
+
+## Performance Components
+
+### `<ConceptMastery />`
+**Location:** `src/components/performance/ConceptMastery.tsx`
+**Purpose:** Display topic proficiency using animated progress bars and dynamic badges.
+
+**Usage:**
+```tsx
+import { ConceptMastery } from '@/components/performance/ConceptMastery'
+
+<ConceptMastery 
+  subject="Mathematics" 
+  topics={[{ id: '1', name: 'Calculus', proficiency: 80, status: 'STEADY' }]}
+  suggestion="We recommend attempting a practice set."
+/>
+```
+
+---
+
+### `<AIPathOptimizer />`
+**Location:** `src/components/performance/AIPathOptimizer.tsx`
+**Purpose:** Visual card to indicate AI-driven study path optimization with a real-time pulse badge.
+
+**Usage:**
+```tsx
+import { AIPathOptimizer } from '@/components/performance/AIPathOptimizer'
+
+<AIPathOptimizer subject="Mathematics" />
+```
+
+**Features:**
 - ✅ Responsive sizing
 - ✅ Custom colors from design system
 - ✅ Smooth animations
@@ -743,6 +782,59 @@ All components with motion use consistent Framer Motion patterns:
 - **Reduced Motion**: Automatically disables for accessibility
 
 ---
+
+---
+
+## Peer Learning Components
+
+### `<PostCard />`
+**Location:** `src/components/peer-learning/PostCard.tsx`
+**Purpose:** Display individual forum posts with status and interactions
+
+**Features:**
+- Avatar and author info
+- Time and subject tag
+- Expert solution indicator (gold badge)
+- Status badges (Verified, Answered, Unanswered)
+- Upvote and reply counts
+- Join Discussion button
+
+**Usage:**
+```tsx
+import { PostCard } from '@/components/peer-learning/PostCard'
+
+<PostCard
+  post={{
+    id: 'p1',
+    author: { name: 'Priya S.', avatarUrl: '...' },
+    timeAgo: '2 HOURS AGO',
+    subject: 'MATHEMATICS',
+    title: 'Can someone explain...',
+    upvotes: 12,
+    replies: 4,
+    status: 'expert',
+    isExpertSolution: true,
+  }}
+/>
+```
+
+---
+
+### `<StatsCard />`
+**Location:** `src/components/peer-learning/StatsCard.tsx`
+**Purpose:** Widget displaying user's forum statistics
+
+**Features:**
+- Solved count
+- Helpful count
+- Glassmorphism design
+
+**Usage:**
+```tsx
+import { StatsCard } from '@/components/peer-learning/StatsCard'
+
+<StatsCard />
+```
 
 ---
 

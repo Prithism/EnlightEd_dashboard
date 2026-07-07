@@ -5,6 +5,12 @@ const nextConfig = {
   images: {
     unoptimized: false,
     formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
+    ],
   },
   headers: async () => [
     {

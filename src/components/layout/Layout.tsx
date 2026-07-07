@@ -12,6 +12,7 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children, title = 'Dashboard', activeRoute = '/' }) => {
   const [isMobile, setIsMobile] = React.useState(false)
+  const [isCollapsed, setIsCollapsed] = React.useState(false)
 
   React.useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024)
@@ -22,13 +23,17 @@ export const Layout: React.FC<LayoutProps> = ({ children, title = 'Dashboard', a
 
   return (
     <div className="min-h-screen bg-bg">
-      <Sidebar activeRoute={activeRoute} />
-      <Navbar title={title} />
+      <Sidebar 
+        activeRoute={activeRoute} 
+        isCollapsed={isCollapsed} 
+        onToggleCollapse={() => setIsCollapsed(!isCollapsed)} 
+      />
+      <Navbar title={title} isCollapsed={isCollapsed} />
 
       {/* Main Content */}
       <main
         className={`transition-all duration-300 pt-20 pb-8 ${
-          isMobile ? 'px-4 ml-0' : 'px-8 ml-64 lg:ml-64'
+          isMobile ? 'px-4 ml-0' : `px-8 ${isCollapsed ? 'ml-20' : 'ml-64'}`
         }`}
       >
         {children}
