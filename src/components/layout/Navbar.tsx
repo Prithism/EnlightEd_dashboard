@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Bell, User, Settings, LogOut, HelpCircle, X } from 'lucide-react'
 import { Card } from '@/components/common/Card'
@@ -158,10 +159,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <Card padding="md" className="shadow-lg">
                     <div className="space-y-1">
-                      <button className="w-full flex items-center gap-2 px-3 py-2 hover:bg-primary/10 rounded-lg transition-colors text-left text-sm text-ink font-body">
+                      <Link href="/profile" onClick={() => setProfileOpen(false)} className="w-full flex items-center gap-2 px-3 py-2 hover:bg-primary/10 rounded-lg transition-colors text-left text-sm text-ink font-body">
                         <User size={16} />
                         Profile
-                      </button>
+                      </Link>
                       <button className="w-full flex items-center gap-2 px-3 py-2 hover:bg-primary/10 rounded-lg transition-colors text-left text-sm text-ink font-body">
                         <Settings size={16} />
                         Settings
