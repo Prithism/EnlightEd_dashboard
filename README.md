@@ -15,16 +15,16 @@ A production-ready SaaS analytics dashboard built with React 18, Next.js 14, Tai
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18 + Next.js 14 |
-| Styling | TailwindCSS + CSS Modules |
-| Animation | Framer Motion |
-| Charts | Recharts |
-| Icons | Lucide React |
-| State | Context API + SWR |
-| Types | TypeScript |
-| Testing | Vitest + React Testing Library |
+| Layer     | Technology                     |
+| --------- | ------------------------------ |
+| Frontend  | React 18 + Next.js 14          |
+| Styling   | TailwindCSS + CSS Modules      |
+| Animation | Framer Motion                  |
+| Charts    | Recharts                       |
+| Icons     | Lucide React                   |
+| State     | Context API + SWR              |
+| Types     | TypeScript                     |
+| Testing   | Vitest + React Testing Library |
 
 ## Color Palette
 
@@ -92,61 +92,59 @@ src/
 ## Key Components
 
 ### Layout
+
 ```tsx
-import { Layout } from '@/components/layout/Layout'
+import { Layout } from "@/components/layout/Layout";
 
 export default function Page() {
   return (
     <Layout title="Dashboard" activeRoute="/">
       {/* Page content */}
     </Layout>
-  )
+  );
 }
 ```
 
 ### MetricCard
+
 ```tsx
-import { MetricCard } from '@/components/metrics/MetricCard'
+import { MetricCard } from "@/components/metrics/MetricCard";
 
 <MetricCard
   label="Total Students"
   value="1,250"
-  trend={{ direction: 'up', percentage: 12 }}
+  trend={{ direction: "up", percentage: 12 }}
   icon={<Users size={24} />}
-/>
+/>;
 ```
 
 ### Chart
+
 ```tsx
-import { Chart } from '@/components/charts/Chart'
+import { Chart } from "@/components/charts/Chart";
 
 <Chart
   title="Enrollment Trend"
   data={data}
   type="line"
-  dataKeys={['students']}
-/>
+  dataKeys={["students"]}
+/>;
 ```
 
 ### Table
-```tsx
-import { Table } from '@/components/data/Table'
 
-<Table
-  columns={columns}
-  data={data}
-  pageSize={10}
-/>
+```tsx
+import { Table } from "@/components/data/Table";
+
+<Table columns={columns} data={data} pageSize={10} />;
 ```
 
 ### ActivityFeed
-```tsx
-import { ActivityFeed } from '@/components/feedback/ActivityFeed'
 
-<ActivityFeed
-  items={activityItems}
-  title="Recent Activity"
-/>
+```tsx
+import { ActivityFeed } from "@/components/feedback/ActivityFeed";
+
+<ActivityFeed items={activityItems} title="Recent Activity" />;
 ```
 
 ## Design System
@@ -155,32 +153,32 @@ Design tokens are centralized in `src/utils/designTokens.ts`:
 
 ```typescript
 export const COLORS = {
-  PRIMARY: '#22819A',
-  SECONDARY: '#90C2E7',
-  BACKGROUND: '#FEF7F8',
+  PRIMARY: "#22819A",
+  SECONDARY: "#90C2E7",
+  BACKGROUND: "#FEF7F8",
   // ...
-}
+};
 
 export const FONTS = {
   DISPLAY: "'Lora', Georgia, serif",
   BODY: "'Inter', 'system-ui', sans-serif",
-}
+};
 
 export const SPACING = {
-  XS: '8px',
-  SM: '16px',
-  MD: '24px',
+  XS: "8px",
+  SM: "16px",
+  MD: "24px",
   // ...
-}
+};
 ```
 
 ## Responsive Breakpoints
 
-| Breakpoint | Width | Device |
-|-----------|-------|--------|
-| Mobile | <768px | Phone |
-| Tablet | 768–1023px | Tablet |
-| Desktop | ≥1024px | Desktop |
+| Breakpoint | Width      | Device  |
+| ---------- | ---------- | ------- |
+| Mobile     | <768px     | Phone   |
+| Tablet     | 768–1023px | Tablet  |
+| Desktop    | ≥1024px    | Desktop |
 
 ## Animations
 
@@ -232,6 +230,7 @@ MIT
 ## Documentation & Support
 
 Please review the primary engineering documents:
+
 - **[PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md)** — Comprehensive state of the project, architecture, and roadmap.
 - **[BACKEND_INTEGRATION.md](./BACKEND_INTEGRATION.md)** — Strict API payload requirements and dynamic UI mapping.
 - **[SETUP.md](./SETUP.md)** — Detailed development guide.
@@ -240,4 +239,4 @@ For other issues, please contact support@enlighted.co.in.
 
 ---
 
-Built with ❤️ using React, Next.js, and the EnlightEd Design System.
+Built with ❤️ using React, Next.js, and the EnlightEd Tech Team
