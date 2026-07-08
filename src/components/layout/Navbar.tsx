@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Bell, User, Settings, LogOut, HelpCircle, X } from 'lucide-react'
 import { Card } from '@/components/common/Card'
+import { ThemeToggle } from '@/components/common/ThemeToggle'
 
 interface NavbarProps {
   title?: string
@@ -96,6 +97,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </AnimatePresence>
           </div>
+
+          {/* Theme Toggle */}
+          <ThemeToggle />
 
           {/* Notifications */}
           <div className="relative">

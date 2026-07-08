@@ -14,8 +14,15 @@
     background-image:
       radial-gradient(circle at 10% 10%, rgba(144, 194, 231, 0.24) 0, transparent 35%),
       radial-gradient(circle at 80% 0%, rgba(34, 129, 154, 0.16) 0, transparent 42%),
-      linear-gradient(180deg, #fff9fa, #fef7f8 40%, #fef7f8);
+      linear-gradient(180deg, #fff9fa, rgb(var(--color-bg)) 40%, rgb(var(--color-bg)));
     background-attachment: fixed;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(254, 247, 248, 0.05) 0, transparent 35%),
+      radial-gradient(circle at 80% 0%, rgba(53, 168, 200, 0.05) 0, transparent 42%),
+      linear-gradient(180deg, #0f3342, rgb(var(--color-bg)) 40%, rgb(var(--color-bg)));
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -67,12 +74,21 @@
 
   /* CSS Variables for dynamic theming */
   :root {
-    --color-primary: #22819A;
-    --color-secondary: #90C2E7;
-    --color-bg: #FEF7F8;
-    --color-ink: #13323A;
-    --color-muted: #4F6C74;
-    --color-gold: #C9972A;
+    --color-primary: 34 129 154;
+    --color-secondary: 144 194 231;
+    --color-bg: 254 247 248;
+    --color-ink: 19 50 58;
+    --color-muted: 79 108 116;
+    --color-gold: 201 151 42;
+  }
+
+  .dark {
+    --color-primary: 53 168 200;
+    --color-secondary: 29 96 114;
+    --color-bg: 15 51 66;
+    --color-ink: 254 247 248;
+    --color-muted: 144 194 231;
+    --color-gold: 201 151 42;
   }
 }
 

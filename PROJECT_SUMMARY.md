@@ -14,6 +14,7 @@ We have successfully built a massive suite of features across multiple routes.
 
 ### Core Architecture & UX
 - **Academic Typography**: Replaced default tech fonts with **Lora** (Display/Serif) and **Inter** (Body/Sans-serif) for a prestigious, textbook-like reading experience.
+- **Dark Mode Support**: Fully integrated class-based dark mode using `next-themes` with seamless transitions and a bespoke dark teal-and-gold color mapping that respects the brand system.
 - **Defensive UI Rendering**: The entire application is protected by Optional Chaining (`?.`) and Nullish Coalescing (`??`). If the backend returns partial data, the UI will degrade gracefully instead of crashing.
 - **Async Loading States**: Implemented highly polished Skeleton loaders (`animate-pulse`) across all pages to mask network latency during data fetching.
 - **Strict React Keys**: Eradicated all `key={index}` anti-patterns. Every mapped list now relies on strict, unique entity IDs.

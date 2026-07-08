@@ -19,6 +19,38 @@
 
 ---
 
+### `<ThemeProvider />`
+**Location:** `src/components/layout/ThemeProvider.tsx`
+**Purpose:** Context provider for next-themes to handle dark/light mode toggling using the `.dark` class
+
+**Usage:**
+```tsx
+import { ThemeProvider } from '@/components/layout/ThemeProvider'
+
+<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+  {children}
+</ThemeProvider>
+```
+
+---
+
+### `<ThemeToggle />`
+**Location:** `src/components/common/ThemeToggle.tsx`
+**Purpose:** Button with animated sun/moon icons to toggle the current theme between dark and light
+
+**Features:**
+- ✅ Framer motion animations
+- ✅ Sun/Moon lucide icons
+
+**Usage:**
+```tsx
+import { ThemeToggle } from '@/components/common/ThemeToggle'
+
+<ThemeToggle />
+```
+
+---
+
 ### `<Sidebar />`
 **Location:** `src/components/layout/Sidebar.tsx`
 **Purpose:** Left navigation panel (fixed desktop, drawer mobile)
