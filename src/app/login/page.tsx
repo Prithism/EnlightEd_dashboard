@@ -31,12 +31,15 @@ export default function LoginPage() {
 
       {/* Header */}
       <header className="relative z-10 flex items-center justify-between p-6 lg:p-8">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-serif text-2xl font-bold shadow-md shadow-primary/20">
-            E
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-105">
+            <img 
+              src="/logo.png" 
+              alt="EnlightEd Logo" 
+              className="h-14 w-auto object-contain dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]"
+            />
           </div>
-          <span className="text-ink font-display font-bold text-2xl tracking-wide">EnlightEd</span>
-        </div>
+        </Link>
         <Link 
           href="/"
           className="flex items-center gap-2 text-sm font-medium text-ink/70 hover:text-ink dark:text-white/80 dark:hover:text-white bg-ink/5 hover:bg-ink/10 dark:bg-white/5 dark:hover:bg-white/10 px-4 py-2.5 rounded-xl transition-all border border-ink/10 dark:border-white/10"

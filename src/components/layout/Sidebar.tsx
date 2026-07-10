@@ -67,12 +67,22 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/', isCollapsed
     <>
       {/* Logo Area */}
       <div className="h-20 flex items-center justify-between px-4 border-b border-white/10">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">
-            E
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="relative flex items-center justify-center dark:bg-white/90 dark:p-1 dark:rounded-lg transition-all duration-300 group-hover:scale-105">
+            <img 
+              src="/logo.png" 
+              alt="EnlightEd Logo" 
+              className={`h-8 w-auto object-contain ${isCollapsed ? 'hidden' : 'block'}`}
+            />
+            {isCollapsed && (
+              <img 
+                src="/logo.png" 
+                alt="E" 
+                className="h-8 w-8 object-cover object-left" 
+              />
+            )}
           </div>
-          {!isCollapsed && <span className="font-display font-bold text-ink text-lg">EnlightEd</span>}
-        </div>
+        </Link>
         {!isMobile && onToggleCollapse && (
           <button
             onClick={onToggleCollapse}
@@ -155,12 +165,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/', isCollapsed
                 className="fixed left-0 top-0 h-screen w-64 glass z-50 flex flex-col lg:hidden"
               >
                 <div className="flex items-center justify-between p-4 border-b border-white/10">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">
-                      E
+                  <Link href="/" className="flex items-center gap-2 group">
+                    <div className="relative flex items-center justify-center dark:bg-white/90 dark:p-1 dark:rounded-lg transition-all duration-300 group-hover:scale-105">
+                      <img 
+                        src="/logo.png" 
+                        alt="EnlightEd Logo" 
+                        className="h-8 w-auto object-contain"
+                      />
                     </div>
-                    <span className="font-display font-bold text-ink">EnlightEd</span>
-                  </div>
+                  </Link>
                   <button
                     onClick={() => setIsDrawerOpen(false)}
                     className="text-primary hover:bg-primary/10 p-1 rounded-lg"
