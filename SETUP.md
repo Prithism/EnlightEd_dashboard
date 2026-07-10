@@ -30,6 +30,9 @@ enlighted-dashboard/
 │   ├── app/                          # Next.js App Router
 │   │   ├── layout.tsx               # Root layout with global styles
 │   │   ├── page.tsx                 # Dashboard home page
+│   │   ├── login/                   # Login Page
+│   │   ├── register/                # Registration Page
+│   │   ├── assignments/             # Assignments & Quiz Flow
 │   │   └── api/                     # API routes (future)
 │   │
 │   ├── components/                   # Reusable React components

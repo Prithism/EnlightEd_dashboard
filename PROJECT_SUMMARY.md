@@ -22,10 +22,11 @@ We have successfully built a massive suite of features across multiple routes.
 ### Fully Developed Pages
 1. **Dashboard (`/`)**: Admin-level overview containing top-level metrics, concept mastery progress bars, a recent assignments table, and a live sessions tracker.
 2. **Performance Analytics (`/performance`)**: Deep-dive analytics featuring Recharts (Area/Radar charts) and an "AI Path Optimizer" recommendations engine.
-3. **Assignments (`/assignments`)**: A Kanban-style overview of Pending, In-Progress, and Graded coursework.
+3. **Assignments (`/assignments` & `/assignments/[id]`)**: A Kanban-style overview of Pending, In-Progress, and Graded coursework, coupled with a dynamic interactive Quiz Flow that pulls mocked questions based on the selected assignment.
 4. **Leaderboard & Batches (`/batches`)**: Cohort tracking and competitive ranking tables.
 5. **AI Doubt Assistant (`/ai-doubt-assistant`)**: A highly interactive chat interface designed to stream responses, complete with history and suggested topics.
 6. **User Profile (`/profile`)**: A bespoke, two-column grid layout featuring a gradient cover banner, editable avatar, enrolled batch tags, and lifetime activity metrics.
+7. **Authentication (`/login` & `/register`)**: Fully responsive, glassmorphic onboarding and registration flows featuring custom theme-adaptive logo integration.
 
 ---
 
@@ -85,8 +86,8 @@ If you are maintaining this codebase, observe the following rules and architectu
 - Swap out the localized `fetchProfileData()` and `fetchDashboardData()` mock functions with real Axios/Fetch calls pointing to the backend.
 - (Reference `BACKEND_INTEGRATION.md` for exact payload structures).
 
-### Phase 4: Authentication
-- Implement a robust Auth layer (e.g., NextAuth.js or Clerk).
+### Phase 4: Authentication Backend
+- Implement a robust Auth layer (e.g., NextAuth.js or Clerk) and wire it up to the existing `/login` and `/register` frontend screens.
 - Add Next.js Middleware to protect routes (e.g., redirecting unauthenticated users from `/profile` back to `/login`).
 
 ---

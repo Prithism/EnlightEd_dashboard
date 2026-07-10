@@ -73,6 +73,9 @@ src/
 ├── app/                    # Next.js App Router
 │   ├── layout.tsx         # Root layout
 │   ├── page.tsx           # Dashboard page
+│   ├── login/             # Login flow
+│   ├── register/          # Registration flow
+│   ├── assignments/       # Assignments & Quizzes
 │   └── api/               # API routes
 ├── components/
 │   ├── layout/            # Sidebar, Navbar, Layout
