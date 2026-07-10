@@ -68,17 +68,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/', isCollapsed
       {/* Logo Area */}
       <div className="h-20 flex items-center justify-between px-4 border-b border-white/10">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="relative flex items-center justify-center dark:bg-white/90 dark:p-1 dark:rounded-lg transition-all duration-300 group-hover:scale-105">
+          <div className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-105">
             <img 
               src="/logo.png" 
               alt="EnlightEd Logo" 
-              className={`h-8 w-auto object-contain ${isCollapsed ? 'hidden' : 'block'}`}
+              className={`h-10 w-auto object-contain dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] ${isCollapsed ? 'hidden' : 'block'}`}
             />
             {isCollapsed && (
               <img 
                 src="/logo.png" 
                 alt="E" 
-                className="h-8 w-8 object-cover object-left" 
+                className="h-10 w-10 object-cover object-left dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]" 
               />
             )}
           </div>
@@ -166,11 +166,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/', isCollapsed
               >
                 <div className="flex items-center justify-between p-4 border-b border-white/10">
                   <Link href="/" className="flex items-center gap-2 group">
-                    <div className="relative flex items-center justify-center dark:bg-white/90 dark:p-1 dark:rounded-lg transition-all duration-300 group-hover:scale-105">
+                    <div className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-105">
                       <img 
                         src="/logo.png" 
                         alt="EnlightEd Logo" 
-                        className="h-8 w-auto object-contain"
+                        className="h-10 w-auto object-contain dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]"
                       />
                     </div>
                   </Link>
