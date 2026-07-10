@@ -112,7 +112,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeRoute = '/', isCollapsed
       {/* Footer */}
       {!isCollapsed && (
         <div className="p-4 border-t border-white/10">
-          <p className="text-xs text-muted font-body mb-3">Version 1.0.0</p>
           <a href="#" className="text-xs text-primary hover:underline">
             Help & Support
           </a>
