@@ -39,6 +39,16 @@ The frontend architecture currently uses mock asynchronous data functions (e.g.,
 | **Global Stats** | `stats: { pending, inProgress, graded }` | Metric Grids |
 | **Assignment Feed** | `assignments: { id, title, subject, type, status, dueDate, score, totalMarks, estimatedTime }[]` | List/Grid Cards |
 
+### 3.1 Assignment Quiz Interface (`/src/app/assignments/[id]/page.tsx`)
+**Target API:** `GET /api/v1/assignments/:id/quiz` & `POST /api/v1/assignments/:id/submit`
+
+| Section | Expected Data Structure | UI Component |
+|---------|-------------------------|--------------|
+| **Quiz Data** | `{ subject, questions: { id, text, options: { id, text }[], marks, type, topic }[] }` | `AssignmentQuizPage` |
+| **Submission**| `POST payload: { assignmentId, responses: { questionId, selectedOptions[] }[] }` | `Submit Assessment` Button |
+
+*Note: Currently, questions are mocked in `src/app/assignments/[id]/mockQuizData.tsx` with dynamic arrays for Biology, Chemistry, Mathematics, Physics, and English based on the mocked assignment ID. When wiring up to the backend, replace the `getQuizDataForAssignment` call with an API fetch to `/api/v1/assignments/:id/quiz`.*
+
 ---
 
 ## 4. Leaderboard & Batches (`/src/app/batches/page.tsx`)

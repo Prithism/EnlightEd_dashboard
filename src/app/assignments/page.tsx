@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { BookOpen, Microscope, Calculator, Beaker, FileText } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { Layout } from '@/components/layout/Layout'
 import { AssignmentCard } from '@/components/assignment/AssignmentCard'
 import { FilterChips } from '@/components/common/FilterChips'
@@ -162,6 +163,7 @@ const itemVariants = {
 }
 
 export default function AssignmentsPage() {
+  const router = useRouter()
   const [activeFilter, setActiveFilter] = React.useState('all')
 
   // Filter assignments based on selected status
@@ -250,7 +252,7 @@ export default function AssignmentsPage() {
                 <AssignmentCard
                   key={assignment.id}
                   {...assignment}
-                  onAction={() => console.log(`Action for ${assignment.id}`)}
+                  onAction={() => router.push(`/assignments/${assignment.id}`)}
                 />
               ))}
             </div>
